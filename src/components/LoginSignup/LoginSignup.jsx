@@ -49,7 +49,7 @@ const Login = () => {
                 {!isLogin && (
                     <div className="input">
                         <img src={email_icon} alt="Email icon" />
-                        <input type="text" placeholder='Name' />
+                        <input type="text" placeholder='Use Fake Email/Password' />
                     </div>
                 )}
                 <div className="input">
