@@ -18,6 +18,9 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { auth, db } from "../../config/firebase";
 import { doSignOut } from '../../config/auth';
 
+const Filter = require('bad-words')
+const filter = new Filter; 
+
 const Home = () => {
     const { currentUser } = useAuth();
     const [loggedIn, setLoggedIn] = useState(false);
@@ -34,11 +37,16 @@ const Home = () => {
 }
 
 function ChatRoom() {
+    let filteredWords;
     const dummy = useRef(null);
     const messagesRef = collection(db, 'messages');
     const q = query(messagesRef, orderBy("createdAt"), limitToLast(30));
     const [ messages ] = useCollectionData(q, { idField: "id" });
     const [formValue, setFormValue] = useState('');
+
+    if (formValue) {
+        filteredWords = filter.clean(formValue);
+    }
 
     useEffect(() => {
         if (dummy.current) {
@@ -53,7 +61,7 @@ function ChatRoom() {
         const { uid, photoURL } = auth.currentUser;
 
         await addDoc(messagesRef, {
-            text: formValue,
+            text: filteredWords,
             createdAt: serverTimestamp(),
             uid,
             photoURL
