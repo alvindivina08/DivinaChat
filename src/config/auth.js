@@ -7,6 +7,7 @@ import {
   updatePassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signInAnonymously
 } from "firebase/auth";
 
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
@@ -23,6 +24,10 @@ export const doSignInWithGoogle = async () => {
   const user = result.user;
 
   // add user to firestore
+};
+
+export const doSignInAnonymously = () => {
+  return signInAnonymously(auth);
 };
 
 export const doSignOut = () => {

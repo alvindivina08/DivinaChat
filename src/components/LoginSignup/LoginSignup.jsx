@@ -3,7 +3,7 @@ import './LoginSignup.css';
 import './newLogin.css'
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
-import { doSignInWithGoogle, doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword } from '../../config/auth';
+import { doSignInWithGoogle, doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword, doSignInAnonymously } from '../../config/auth';
 import { useAuth } from '../../contexts/authContext';
 import { Navigate, Link } from 'react-router-dom';
 
@@ -33,6 +33,17 @@ const Login = () => {
                 });
         }
     };
+
+    const onDoSignInAnonymously = async (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+
+        await doSignInAnonymously().catch(err => {
+            setErrorMessage(err.message)
+            setIsSigningIn(false);
+        });
+    }
 
     const onGoogleSignIn = async (e) => {
         if (e && e.preventDefault) {
@@ -75,6 +86,7 @@ const Login = () => {
                 <div className='or'>OR</div>
                 <div className="googleSignIn">
                     <button className="sign-in-with-google" onClick={onGoogleSignIn}>Sign in with Google</button>
+                    <button className="sign-in-with-google" onClick={onDoSignInAnonymously}>Sign in Anonymously</button>
                 </div>
             </div>
             <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>

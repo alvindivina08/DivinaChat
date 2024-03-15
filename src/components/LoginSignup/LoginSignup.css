@@ -35,7 +35,7 @@
     margin-top: 55px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
 }
 
 .input{
@@ -118,7 +118,7 @@
     background: transparent;
     color: #797979;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .error-message{
