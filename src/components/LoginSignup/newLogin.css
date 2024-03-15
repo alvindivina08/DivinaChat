@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 50px; /* Adjust margin-top for smaller devices */
+    max-width: 600px;
+    width: 90%; /* Adjust width for smaller devices */
+    background: #fff;
+    padding-bottom: 30px;
+}
+
+.text {
+    font-size: 36px; /* Decrease font size for smaller devices */
+}
+
+.underline {
+    width: 50px; /* Decrease width for smaller devices */
+}
+
+.inputs {
+    margin-top: 40px; /* Decrease margin-top for smaller devices */
+}
+
+.input {
+    width: 90%; /* Adjust width for smaller devices */
+}
+
+.input img {
+    margin: 0px 20px; /* Decrease margin for smaller devices */
+}
+
+.input input {
+    height: 50px;
+    width: 80%; /* Adjust width for smaller devices */
+    font-size: 16px; /* Decrease font size for smaller devices */
+}
+
+.forgot-password {
+    margin-top: 10px; /* Decrease margin-top for smaller devices */
+    font-size: 14px; /* Decrease font size for smaller devices */
+}
+
+.submit-container {
+    gap: 15px; /* Decrease gap between buttons for smaller devices */
+    margin: 40px auto; /* Adjust margin for smaller devices */
+}
+
+.submit {
+    width: 150px; /* Decrease width for smaller devices */
+    height: 50px; /* Decrease height for smaller devices */
+    font-size: 16px; /* Decrease font size for smaller devices */
+}
+
+.sign-in-with-google {
+    margin-top: 10px; /* Decrease margin-top for smaller devices */
+}

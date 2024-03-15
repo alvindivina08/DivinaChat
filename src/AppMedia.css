@@ -1,0 +1,50 @@
+body {
+    background-color: #224425;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  /* Adjust header styles for smaller screens */
+  .App header {
+    height: 8vh; /* Increase header height for smaller screens */
+  }
+  
+  /* Adjust main styles for smaller screens */
+  main {
+    padding: 10px;
+    height: auto; /* Remove fixed height */
+    margin: 8vh 0; /* Adjust margin for smaller screens */
+  }
+  
+  /* Adjust form styles for smaller screens */
+  form {
+    height: 8vh; /* Increase form height for smaller screens */
+  }
+  
+  /* Adjust input width for smaller screens */
+  input {
+    width: 80%; /* Adjust input width for smaller screens */
+  }
+  
+  /* Adjust button width for smaller screens */
+  form button {
+    width: 20%; /* Adjust button width for smaller screens */
+  }
+  
+  /* Adjust button font size for smaller screens */
+  button {
+    font-size: 1rem; /* Decrease button font size for smaller screens */
+  }
+  
+  /* Adjust message body margin for smaller screens */
+  .message-body {
+    margin-top: 6rem; /* Decrease margin-top for smaller screens */
+    margin-bottom: 6rem; /* Decrease margin-bottom for smaller screens */
+  }
+  
+  /* Adjust image size for smaller screens */
+  img {
+    width: 30px; /* Decrease image width for smaller screens */
+    height: 30px; /* Decrease image height for smaller screens */
+  }
+  

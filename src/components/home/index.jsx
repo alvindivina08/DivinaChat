@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/authContext'
 
 import "../../App.css";
+import "../../AppMedia.css"
 
 import {
   collection,

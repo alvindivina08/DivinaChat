@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
+import './newLogin.css'
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 import { doSignInWithGoogle, doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword } from '../../config/auth';
