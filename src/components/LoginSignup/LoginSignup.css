@@ -119,3 +119,10 @@
     margin: auto;
     margin-top: 40px;
 }
+
+.error-message{
+    display: flex;
+    color: red;
+    font: bold;
+    justify-content: center;
+}

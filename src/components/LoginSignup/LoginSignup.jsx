@@ -22,7 +22,14 @@ const Login = () => {
         }
         if (!isSigningIn && email && password) {
             setIsSigningIn(true);
-            await (isLogin ? doSignInWithEmailAndPassword(email, password) : doCreateUserWithEmailAndPassword(email, password));
+            await (isLogin ? 
+                doSignInWithEmailAndPassword(email, password).catch(err => {
+                    setErrorMessage(err.message)
+                    setIsSigningIn(false);
+                }) : doCreateUserWithEmailAndPassword(email, password)).catch(err => {
+                    setErrorMessage(err.message)
+                    setIsSigningIn(false);
+                });
         }
     };
 
@@ -33,6 +40,7 @@ const Login = () => {
         if (!isSigningIn) {
             setIsSigningIn(true);
             await doSignInWithGoogle().catch(err => {
+                setErrorMessage(err.message)
                 setIsSigningIn(false);
             });
         }
@@ -60,6 +68,9 @@ const Login = () => {
                     <img src={password_icon} alt="Password icon" />
                     <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
                 </div>
+                {errorMessage && (
+                    <span className='error-message'>{errorMessage}</span>
+                )}
                 <div className='or'>OR</div>
                 <div className="googleSignIn">
                     <button className="sign-in-with-google" onClick={onGoogleSignIn}>Sign in with Google</button>
