@@ -38,9 +38,9 @@ body {
   
   /* Adjust message body margin for smaller screens */
   .message-body {
-    margin-top: 6rem; /* Decrease margin-top for smaller screens */
-    margin-bottom: 6rem; /* Decrease margin-bottom for smaller screens */
-  }
+    margin-top: 18%; /* Decrease margin-top for smaller screens */
+    margin-bottom: 18%; /* Decrease margin-bottom for smaller screens */
+}
   
   /* Adjust image size for smaller screens */
   img {
@@ -48,3 +48,10 @@ body {
     height: 30px; /* Decrease image height for smaller screens */
   }
   
+
+@media screen and (max-width: 1700px) {
+    .message-body {
+        margin-top: 18%; /* Decrease margin-top for smaller screens */
+        margin-bottom: 18%; /* Decrease margin-bottom for smaller screens */
+    }
+}

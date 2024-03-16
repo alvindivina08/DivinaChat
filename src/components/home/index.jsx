@@ -20,25 +20,41 @@ import { auth, db } from "../../config/firebase";
 import { doSignOut } from '../../config/auth';
 
 const Filter = require('bad-words')
-const filter = new Filter; 
+const filter = new Filter(); 
 
 const Home = () => {
     const { currentUser } = useAuth();
     const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (currentUser) {
             setLoggedIn(true);
+        } else {
+            navigate('/login')
         }
-    }, [currentUser]);
+    }, [currentUser, navigate]);
 
     return (
         <ChatRoom loggedIn={loggedIn} />
     );
 }
 
-function ChatRoom() {
+function cleanHacked(string) {
+    try {
+        return filter.clean(string);
+    } catch {
+        const joinMatch = filter.splitRegex.exec(string);
+        const joinString = (joinMatch && joinMatch[0]) || '';
+        return string.split(filter.splitRegex).map((word) => {
+            return filter.isProfane(word) ? filter.replaceWord(word) : word;
+        }).join(joinString);
+    }
+}
+
+function ChatRoom(props) {
     let filteredWords;
+    // const { loggedIn } = props;
     const dummy = useRef(null);
     const messagesRef = collection(db, 'messages');
     const q = query(messagesRef, orderBy("createdAt"), limitToLast(30));
@@ -46,14 +62,15 @@ function ChatRoom() {
     const [formValue, setFormValue] = useState('');
 
     if (formValue) {
-        filteredWords = filter.clean(formValue);
+        filteredWords = cleanHacked(formValue);
     }
 
     useEffect(() => {
-        if (dummy.current) {
-            setTimeout(() => {
+        if (dummy.current && messages && messages.length > 0) {
+            const timeoutId = setTimeout(() => {
                 dummy.current.scrollIntoView({ behavior: 'smooth'});
             }, 100);
+            return () => clearTimeout(timeoutId);
         }
     }, [messages]);
 
