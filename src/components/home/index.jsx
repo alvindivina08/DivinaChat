@@ -52,9 +52,8 @@ function cleanHacked(string) {
     }
 }
 
-function ChatRoom(props) {
+function ChatRoom() {
     let filteredWords;
-    // const { loggedIn } = props;
     const dummy = useRef(null);
     const messagesRef = collection(db, 'messages');
     const q = query(messagesRef, orderBy("createdAt"), limitToLast(30));
@@ -87,6 +86,12 @@ function ChatRoom(props) {
 
         setFormValue('');
     };
+
+    const handleInputChange = (e) => {
+        setFormValue(e.target.value);
+        e.target.style.height = 'auto';
+        e.target.style.height = e.target.scrollHeight + 'px';
+    };
   
     return (
       <>
@@ -97,15 +102,20 @@ function ChatRoom(props) {
             </header>
             <div className="message-body">
     
-            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+            {messages && messages.map(msg => <ChatMessage key={msg.uid} message={msg} />)}
             <div ref={dummy}></div>
     
             </div>
     
             <form onSubmit={sendMessage}>
     
-            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Message" />
-            <button type="submit" disabled={!formValue}>Sned</button>
+                <textarea
+                    value={formValue}
+                    onChange={handleInputChange}
+                    placeholder="Message"
+                    style={{ minHeight: '50px', maxHeight: '200px', width: '100%' }} // Set min and max height as desired
+                />
+                <button type="submit" disabled={!formValue}>Send</button>
     
             </form>
 

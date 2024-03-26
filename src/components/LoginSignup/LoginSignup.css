@@ -122,8 +122,18 @@
 }
 
 .error-message{
-    display: flex;
+    margin: auto;
+    width: 480px;
     color: red;
-    font: bold;
-    justify-content: center;
+    font-style: italic;
+}
+
+.success-message{
+    display: flex;
+    align-items: center;
+    color: green;
+    font-style: italic;
+    margin: auto;
+    width: 480px;
+    /* justify-content: center; */
 }
