@@ -107,8 +107,16 @@
     justify-content: center;
     align-items: center;
     background: transparent;
-    color: #797979;
+    color: #0914e4;
     margin: auto;
+    background-color: #04AA6D; /* Green */
+    color: white;
+    width: 300px;
+}
+
+.sign-in-with-google:hover{
+    background-color: #150def; /* Green */
+    color: white;
 }
 
 .or{

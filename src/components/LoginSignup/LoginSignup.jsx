@@ -66,12 +66,6 @@ const Login = () => {
                 <div className='underline'></div>
             </div>
             <div className='inputs'>
-                {!isLogin && (
-                    <div className="input">
-                        <img src={email_icon} alt="Email icon" />
-                        <input type="text" placeholder='Use Fake Email/Password' />
-                    </div>
-                )}
                 <div className="input">
                     <img src={email_icon} alt="Email icon" />
                     <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
